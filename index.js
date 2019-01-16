@@ -5,3 +5,42 @@ const questions = [
 ]
 
 let question;
+function askQuestion(){
+  return questions[0]
+}
+
+function appendQuestion(question) {
+  let questionContainer = document.querySelector(".question-container");
+  questionContainer.innerHTML = question.questionText;
+}
+
+function askQuestionThen(time){
+  question = questions[0]
+  appendQuestion(question)
+  return new Promise(function(resolve){
+    setTimeout(function(){
+      resolve(question)
+    }, time)
+  })
+}
+
+function removeQuestion() {
+  let questionContainer = document.querySelector(".question-container");
+  questionContainer.innerHTML = null;
+}
+
+function askQuestionThenRemoveQuestion(time) {
+  return askQuestionThen(time).then(removeQuestion)
+}
+
+function trueAndFalseButtons(){
+  return btns = document.querySelector('.true-false-list').querySelectorAll('.btn')
+}
+
+function toggleTrueAndFalseButtons() {
+  trueAndFalseButtons().forEach (e => e.classList.toggle('hide'))
+}
+
+function displayQuestionOnClick() {
+
+}
